@@ -10,6 +10,7 @@ class Solution {
             int temp = arr[zero];
             arr[zero] = arr[notAnZero];
             arr[notAnZero] = temp;
+            zero++;
 
         }else{
             zero++;
