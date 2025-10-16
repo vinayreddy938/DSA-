@@ -13,14 +13,17 @@
  */
 class Solution {
     public ListNode middleNode(ListNode head) {
-        ListNode slow = head;
-        ListNode fast = head;
-        while(fast!=null && fast.next!=null){
-            slow = slow.next;
-            fast = fast.next.next;
+       ArrayList<ListNode> list = new ArrayList<>();
+        ListNode current = head;
+        
+        while(current !=null){
+            list.add(current);
+            current = current.next;
         }
-
-        return slow;
+        int n= list.size();
+        int mid = n/2;
+        return list.get(mid);
+      
 
         
     }
