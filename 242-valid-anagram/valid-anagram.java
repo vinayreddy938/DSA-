@@ -15,9 +15,7 @@ class Solution {
         }
         for(int i=0;i<t.length();i++){
             char ch = t.charAt(i);
-            if(!(hmap.containsKey(ch))){
-                return false;
-            }else if(hmap.get(ch)==0){
+            if((!(hmap.containsKey(ch)))||hmap.get(ch)==0){
                 return false;
             }
             else{
