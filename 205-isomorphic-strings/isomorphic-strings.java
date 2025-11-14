@@ -2,7 +2,7 @@ class Solution {
     public boolean isIsomorphic(String s, String t) {
         HashMap<Character,Character> hmap = new HashMap<>();
         HashSet<Character> hset = new HashSet<>();
-        String result = "";
+       StringBuilder result = new StringBuilder();
         for(int i=0;i<s.length();i++){
             char ch1 = s.charAt(i);
             char ch2 = t.charAt(i);
@@ -13,12 +13,13 @@ class Solution {
            
         }
         for(int i=0;i<s.length();i++){
-            result+=hmap.get(s.charAt(i));
+          result.append(hmap.get(s.charAt(i)));
         }
     
         
        
         
-    return result.equals(t);    
+   return result.toString().equals(t);
+
     }
 }
