@@ -3,6 +3,22 @@
  * @return {number}
  */
 var mySqrt = function(x) {
-
-    return Math.floor(Math.pow(x,0.5));
+    if(x<2){
+        return x;
+    }
+    let left=2;
+    let right = Math.floor(x/2);
+    while(left<=right){
+        let mid = Math.floor((left+right)/2);
+        if(x=== mid**2){
+            return mid;
+        }
+        else if(x>mid**2){
+            left = mid+1;
+        }
+        else{
+            right = mid-1;
+        }
+    }
+    return right;
 };
