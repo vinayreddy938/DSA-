@@ -3,7 +3,7 @@ class Solution {
         int count  = 0;
         for(int i=0;i<nums.length;i++){
             int a = nums[i];
-            for(int j=i;j<nums.length;j++){
+            for(int j=i+1;j<nums.length;j++){
                 int b = nums[j];
                 int difference = Math.abs(a-b);
                 if(difference==k && i<j){
