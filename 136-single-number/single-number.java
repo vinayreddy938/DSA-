@@ -1,15 +1,9 @@
 class Solution {
     public int singleNumber(int[] nums) {
-        Arrays.sort(nums);
-        int i=0;
-        int j=1;
-        while(i<nums.length && j<nums.length){
-            if(nums[i]!=nums[j]){
-                return nums[i];
-            }
-            i+=2;
-            j+=2;
+        int missingNumber = 0;
+        for(int i=0;i<nums.length;i++){
+            missingNumber^=nums[i];
         }
-       return nums[nums.length-1];
+        return missingNumber;
     }
 }
