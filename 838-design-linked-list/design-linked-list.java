@@ -1,115 +1,106 @@
-class Node {
-    int value ;
-    Node next;
-    Node(int value){
+class Node{
+    public int value;
+    public Node next;
+    public Node(int value){
         this.value = value;
         this.next = null;
     }
-    
+
 }
 
-
 class MyLinkedList {
-    Node head;
-    int size ;
+    public Node head;
+    private int size;
+
+
     public MyLinkedList() {
-       head = null;
-       size = 0;
+        this.head = null;
+    this.size = 0;
         
     }
     
     public int get(int index) {
-        if(index<0 || index>=size){
+        if(index<0 || index>=this.size){
             return -1;
-        }
-        Node  current = this.head;
-        for(int i=0;i<index;i++){
-            current = current.next;
-        }
-        return current.value;
 
+        }
+        Node currentNode = head;
+        for(int i=0;i<index;i++){
+            currentNode = currentNode.next;
+        }
+        return currentNode.value;
         
     }
     
     public void addAtHead(int val) {
-        Node newNode = new Node(val);
-        newNode.next = this.head; 
-        this.head = newNode;
+        Node node = new Node(val);
+        node.next=this.head;
+        this.head=node;
         this.size++;
-
-
         
     }
     
     public void addAtTail(int val) {
-        Node newNode = new Node(val);
-        if(this.head == null){
-            this.head = newNode;
-            size++;
+        if(this.head==null){
+            addAtHead(val);
+    
             return;
-        }
-        Node current = this.head;
-        while(current.next!=null){
-            current = current.next;
+            
 
         }
-        //   newNode.next =  current.next; this will alrwady nu;; wy we do that unnecessary
-        current.next = newNode;
+
+        Node node= new Node(val);
+
+        Node currentNode = this.head;
+        while(currentNode.next!=null){
+            currentNode = currentNode.next;
+        }
+            currentNode.next = node;
         this.size++;
-      
-       
+
+
         
     }
     
     public void addAtIndex(int index, int val) {
-        //       head-> 3->4->5
-        //indexes       0->1->2 addAtIndex(2,3) 3->4->3->5
-         if(index<0 || index>size){
-            return ;
-        } 
-        if(index == size){
-            addAtTail(val);
-           
+        if(index<0 || index>size){
             return;
         }
-        if(index == 0){
-            addAtHead(val);
 
-          return;
-         }
+            if(index == 0){
+        addAtHead(val);
+        return;
+    }
 
-        Node newNode = new Node(val);
-        Node  current = this.head;
+
+        Node node = new Node(val);
+        Node currentNode = this.head;
         for(int i=0;i<index-1;i++){
-            current= current.next;
-
+            currentNode = currentNode.next;
+            
         }
-        newNode.next = current.next;
-        current.next = newNode;
+        node.next = currentNode.next;
+        currentNode.next =node;
         this.size++;
-
-        
-        
         
     }
     
     public void deleteAtIndex(int index) {
-        if(index<0 || index >=this.size){
+          if(index<0 || index>=this.size){
             return;
 
         }
-        Node  current = this.head;
-           if(index == 0){
-              head = head.next;  // head-> 3-> 5 deleete(0) current = 3 /current.next = current.next.next
-               size--;
-             return;
-            }
+        if(index == 0){
+          head = head.next;
+        size--;
+      return;
+}
+        Node currentNode = head;
         for(int i=0;i<index-1;i++){
-            current= current.next;
-
+            currentNode = currentNode.next;
         }
-         current.next  = current.next.next;
-         size--;
+        currentNode.next = currentNode.next.next;
+        this.size--;
 
         
     }
