@@ -9,17 +9,22 @@
  * }
  */
 class Solution {
-    public ListNode deleteDuplicates(ListNode head) { 
-        ListNode current = head;
-        while(current!=null && current.next!=null){
-            if(current.val == current.next.val){
-                current.next = current.next.next;
+    public ListNode deleteDuplicates(ListNode head) {
+        if(head==null){
+            return head;
+        }
+        ListNode prev=head;
+        ListNode current=head.next;
+        while(current!=null){
+            if(prev.val==current.val){
+                prev.next = prev.next.next;
+                current=current.next;
             }else{
-                current = current.next;
+               prev=prev.next;
+               current = current.next;
             }
         }
         return head;
-
         
     }
 }
