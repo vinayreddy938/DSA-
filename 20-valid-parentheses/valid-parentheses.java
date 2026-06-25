@@ -1,25 +1,27 @@
 class Solution {
-    public boolean isValid(String s) {
-        Stack<Character> stack = new Stack<>();//O(n)
-        HashMap<Character,Character> hmap = new HashMap<>();//constant
-        hmap.put('{','}');
+    public boolean isValid(String n) {
+       
+        HashMap<Character,Character> hmap = new HashMap<>();
         hmap.put('(',')');
+        hmap.put('{','}');
         hmap.put('[',']');
-        for(int i=0;i<s.length();i++){
-            char ch = s.charAt(i);
+        Stack<Character> s = new Stack<>();
+        for(int i=0;i<n.length();i++){
+            char ch = n.charAt(i);
             if(hmap.containsKey(ch)){
-                stack.push(ch);
-            }else{
-                if(stack.isEmpty()){
+                s.push(ch);
+            }else{ 
+                if(s.isEmpty()){
                     return false;
                 }
-                char top = stack.pop();
-                if(hmap.get(top)!=ch){
-                    return false;
+                char ch2 = s.pop();
+                if(hmap.get(ch2)!=ch){
+                    
+                    return  false;
                 }
             }
-            
         }
-        return stack.size()==0;
+        return s.isEmpty();
+        
     }
 }
